@@ -1,0 +1,21 @@
+# .gitignore for ESP-IDF project
+
+# Build artifacts
+build/
+sdkconfig
+sdkconfig.old
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies
+dependencies/
+managed_components/
+
+# Debug
+*.log
