@@ -3,7 +3,6 @@
 #include "bluetooth_component.h"
 #include "bluetooth_rx.h"
 #include "esp_log.h"
-#include "twai_component.h"
 #include "twai_tx.h"
 
 static const char *TAG = "platform_init";
@@ -29,11 +28,6 @@ esp_err_t platform_init_startup(void)
     esp_err_t err;
     s_state = PLATFORM_STATE_STARTING;
 
-    err = twai_component_init();
-    if (err != ESP_OK) {
-        goto fail;
-    }
-
     err = twai_tx_init();
     if (err != ESP_OK) {
         goto fail;
@@ -58,7 +52,6 @@ fail:
     (void)bluetooth_component_deinit();
     (void)bluetooth_rx_deinit();
     (void)twai_tx_deinit();
-    (void)twai_component_deinit();
     s_state = PLATFORM_STATE_STOPPED;
     return err;
 }
@@ -74,7 +67,6 @@ esp_err_t platform_init_shutdown(void)
     (void)bluetooth_component_deinit();
     (void)bluetooth_rx_deinit();
     (void)twai_tx_deinit();
-    (void)twai_component_deinit();
 
     s_state = PLATFORM_STATE_STOPPED;
     ESP_LOGI(TAG, "Platform shutdown complete");

@@ -3,16 +3,19 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "driver/gpio.h"
-#include "esp_err.h"
+#include "can.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#define TWAI_TX_GPIO GPIO_NUM_5
-#define TWAI_RX_GPIO GPIO_NUM_4
-#define TWAI_DEFAULT_CAN_ID 0x321
+/*
+ * Compatibility wrapper for older code paths that still include `twai_component.h`.
+ * The canonical low-level TWAI/CAN transport now lives in `components/can`.
+ */
+#define TWAI_TX_GPIO        CAN_TX_GPIO_NUM
+#define TWAI_RX_GPIO        CAN_RX_GPIO_NUM
+#define TWAI_DEFAULT_CAN_ID CAN_DEFAULT_TX_ID
 
 typedef struct {
     gpio_num_t tx_gpio;

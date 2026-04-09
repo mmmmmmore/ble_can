@@ -12,7 +12,7 @@ static void bluetooth_rx_forwarder(const uint8_t *data, size_t len, void *ctx)
 
     esp_err_t err = twai_tx_forward_bytes(data, len);
     if (err != ESP_OK) {
-        ESP_LOGE(TAG, "Failed to forward BLE payload to TWAI: %s", esp_err_to_name(err));
+        ESP_LOGE(TAG, "Failed to forward BLE payload to CAN: %s", esp_err_to_name(err));
     }
 }
 

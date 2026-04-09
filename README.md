@@ -43,3 +43,6 @@ idf.py -p /dev/tty.usbmodemXXXX flash monitor
 5. Observe matching TWAI frames on the CAN bus analyzer.
 
 Large BLE writes are split transparently into 8-byte TWAI frames in send order.
+
+
+function test scan can found the device, next step for pad and CAN test

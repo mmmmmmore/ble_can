@@ -8,7 +8,7 @@ static const char *TAG = "main";
 
 void app_main(void)
 {
-    ESP_LOGI(TAG, "Starting ESP32-S3 BLE -> TWAI transparent bridge");
+    ESP_LOGI(TAG, "Starting ESP32-S3 BLE -> CAN bridge");
 
     const esp_err_t err = platform_init_startup();
     if (err != ESP_OK) {
